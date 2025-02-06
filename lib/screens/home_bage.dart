@@ -1,14 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:quran_app/constents.dart';
+import 'package:quran_app/models/categoris_model.dart';
+import 'package:quran_app/widgets/custom_card.dart';
+import 'package:quran_app/widgets/show_timeNow.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +39,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           Image.asset(
               'assets/images/vecteezy_jerusalem-palestinian-al-aqsa-mosque-cartoon-vector_25682958-1.jpg'),
-        ],
+          ShowTimeWidget(),
+          CustomCard(category: category[0]),
+          CustomCard(category: category[1]),
         
+        ],
       ),
     );
   }
