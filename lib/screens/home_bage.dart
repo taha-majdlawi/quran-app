@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:quran_app/constents.dart';
 import 'package:quran_app/models/categoris_model.dart';
-import 'package:quran_app/widgets/custom_card.dart';
+import 'package:quran_app/screens/show_all_surah.dart';
+import 'package:quran_app/widgets/custom_category_card.dart';
 import 'package:quran_app/widgets/show_timeNow.dart';
 
 class HomePage extends StatelessWidget {
@@ -55,7 +56,16 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            CustomCard(category: category[0]),
+            CustomCard(
+              category: category[0],
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return ShowAllSurah();
+                  },
+                ));
+              },
+            ),
             CustomCard(category: category[1]),
           ],
         ),
