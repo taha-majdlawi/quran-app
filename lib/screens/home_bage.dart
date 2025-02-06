@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/constents.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +34,13 @@ class HomePage extends StatelessWidget {
             width: 20,
           ),
         ],
+      ),
+      body: Column(
+        children: [
+          Image.asset(
+              'assets/images/vecteezy_jerusalem-palestinian-al-aqsa-mosque-cartoon-vector_25682958-1.jpg'),
+        ],
+        
       ),
     );
   }
