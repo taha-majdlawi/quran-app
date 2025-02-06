@@ -111,6 +111,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 } else if (e.code == "email-already-in-use") {
                                   showSnackBar(context,
                                       'Email already in use, Try to Sign In');
+                                }else{
+                                   showSnackBar(context, 'worng email format');
                                 }
                               } catch (e) {
                                 showSnackBar(context, e.toString());
