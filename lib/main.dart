@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:quran_app/screens/home_bage.dart';
 
 import 'package:quran_app/screens/login_screen.dart';
 import 'firebase_options.dart';
@@ -29,7 +28,7 @@ class QuranApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginScreen(),
     );
   }
 }

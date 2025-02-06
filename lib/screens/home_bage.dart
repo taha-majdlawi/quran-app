@@ -15,12 +15,13 @@ class HomePage extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
         toolbarHeight: 100,
-        backgroundColor: const Color.fromARGB(255, 102, 110, 85),
+        backgroundColor: kPrimaryColor,
+        automaticallyImplyLeading: false,
         actions: [
           Image.asset('assets/images/quran.png', height: 80, width: 80),
           SizedBox(
             height: 20,
-            width: 180,
+            width: 175,
           ),
           Text(
             'القرآن الكريم',
@@ -35,15 +36,29 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Image.asset(
-              'assets/images/vecteezy_jerusalem-palestinian-al-aqsa-mosque-cartoon-vector_25682958-1.jpg'),
-          ShowTimeWidget(),
-          CustomCard(category: category[0]),
-          CustomCard(category: category[1]),
-        
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Card(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                    'assets/images/vecteezy_jerusalem-palestinian-al-aqsa-mosque-cartoon-vector_25682958-1.jpg'),
+              ),
+              elevation: 10,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            ShowTimeWidget(),
+            SizedBox(
+              height: 40,
+            ),
+            CustomCard(category: category[0]),
+            CustomCard(category: category[1]),
+          ],
+        ),
       ),
     );
   }
