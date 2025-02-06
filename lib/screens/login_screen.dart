@@ -36,9 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 64,
                   ),
-                  // Image.asset(
-                  //   'assets/images/scholar.png',
-                  // ),
+                  Image.asset(
+                    'assets/images/img1.png',
+                    height: 300,
+                  ),
                   const Text(
                     'Qurany',
                     style: TextStyle(
@@ -144,11 +145,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                           Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return const RegisterScreen();
-                                  },
-                                ));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return const RegisterScreen();
+                              },
+                            ));
                           },
                           child: const Text(
                             '  Sign Up',

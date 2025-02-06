@@ -39,9 +39,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(
                   height: 42,
                 ),
-                // Image.asset(
-                //   'assets/images/scholar.png',
-                // ),
+                Image.asset(
+                  'assets/images/img1.png',
+                  height: 300,
+                ),
                 const Text(
                   'Qurany',
                   style: TextStyle(
@@ -111,8 +112,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 } else if (e.code == "email-already-in-use") {
                                   showSnackBar(context,
                                       'Email already in use, Try to Sign In');
-                                }else{
-                                   showSnackBar(context, 'worng email format');
+                                } else {
+                                  showSnackBar(context, 'worng email format');
                                 }
                               } catch (e) {
                                 showSnackBar(context, e.toString());
