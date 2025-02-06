@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/models/surah_model.dart';
 
 class SurahCard extends StatelessWidget {
-  const SurahCard({super.key, this.onTap});
-
+  const SurahCard({super.key, this.onTap, required this.sura});
+  final SurahModel sura;
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class SurahCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        'الفاتحة',
+                       sura.surahName,
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 28,
@@ -53,7 +54,7 @@ class SurahCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0),
                 child: Text(
-                  'مدنية',
+                  sura.revelationPlace,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 28,
