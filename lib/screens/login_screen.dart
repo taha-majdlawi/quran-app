@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Image.asset(
                     'assets/images/img1.png',
-                    height: 300,
+                    height: 250,
                   ),
                   const Text(
                     'Qurany',

@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 Image.asset(
                   'assets/images/img1.png',
-                  height: 300,
+                  height: 250,
                 ),
                 const Text(
                   'Qurany',

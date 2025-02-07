@@ -33,10 +33,10 @@ class ShowAllSurah extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: surahs.length,
-        itemBuilder: (context, index) {
-        return SurahCard(sura: surahs[index]);
-      }),
+          itemCount: surahs.length,
+          itemBuilder: (context, index) {
+            return SurahCard(sura: surahs[index]);
+          }),
     );
   }
 }
