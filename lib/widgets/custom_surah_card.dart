@@ -59,8 +59,7 @@ class SurahCard extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                height: 30,
-                                width: 30,
+                                
                               ),
                               elevation: 10,
                             ),

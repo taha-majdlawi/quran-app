@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 100,
         backgroundColor: kPrimaryColor,
-        automaticallyImplyLeading: false,
+    automaticallyImplyLeading: false,
         actions: [
           Image.asset('assets/images/quran.png', height: 80, width: 80),
           SizedBox(
