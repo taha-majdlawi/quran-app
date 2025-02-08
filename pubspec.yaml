@@ -83,6 +83,12 @@ flutter:
     - family: Lalezar
       fonts:
         - asset: assets/fonts/Lalezar-Regular.ttf
+    - family: Amiri Quran
+      fonts:
+        - asset: assets/fonts/AmiriQuran-Regular.ttf  
+    - family: aa
+      fonts:
+        - asset: assets/fonts/QuranSurah2-7Bov4.ttf   
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

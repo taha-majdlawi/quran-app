@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_app/constents.dart';
 import 'package:quran_app/models/surah_model.dart';
+import 'package:quran_app/widgets/show_ayah_widget.dart';
 
 class QuranScreen extends StatefulWidget {
   const QuranScreen({
@@ -23,7 +24,7 @@ class _QuranScreenState extends State<QuranScreen> {
   bool _isLoading = true;
   late PageController _pageController;
   int currentIndex = 0;
-
+  
   @override
   void initState() {
     super.initState();
@@ -45,42 +46,35 @@ class _QuranScreenState extends State<QuranScreen> {
             ),
           )
         : Scaffold(
-           
-            backgroundColor: kPrimaryColor,
+            appBar: AppBar(
+              title: Text(
+                surahs[currentIndex].surahName,
+                style: TextStyle(
+                  fontFamily: 'Amiri Quran',
+                  fontSize: 30,
+                ),
+              ),
+              actions: [
+                Text(widget.sura.ayahs[0].pageNumber.toString()),
+              ],
+              centerTitle: true,
+            ),
+            backgroundColor: Colors.white,
             body: PageView.builder(
               controller: _pageController,
               itemCount: surahs.length,
               onPageChanged: (index) {
-               
-                  currentIndex = index;
-                  loadSurahData(surahNumber: ++index);
-              
+                print(_pageController.page);
+                currentIndex = index;
+                loadSurahData(surahNumber: ++index);
+                setState(() {});
               },
               itemBuilder: (context, index) {
                 SurahModel sura = surahs[index];
 
                 return Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: ListView(
-                    children: [
-                      Text(
-                        '﴾' + sura.surahName + '﴿',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 10),
-                      ...widget.sura.ayahs!.map((ayah) => Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0),
-                            child: Text(
-                              ' ﴾${ayah.text}﴿ ${ayah.ayahNumber}',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                  fontSize: 25, fontFamily: 'QuranFont'),
-                            ),
-                          )),
-                    ],
-                  ),
+                  child: show_ayah_widget(widget: widget),
                 );
               },
             ),
@@ -104,8 +98,6 @@ class _QuranScreenState extends State<QuranScreen> {
         widget.sura.ayahs.add(Ayah.fromJson(json['verses'][i]));
         print(Ayah.fromJson(json['verses'][i]));
       }
-    }else{
-
-    }
+    } else {}
   }
 }
