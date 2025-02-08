@@ -18,12 +18,19 @@ class QuranScreen extends StatefulWidget {
 
 class _QuranScreenState extends State<QuranScreen> {
   Map<String, dynamic> surahData = {};
-  List<Ayah> ayahs = [];
+  //List<Ayah> ayahs = [];
+  Map<String, dynamic> jsonData = {};
   bool _isLoading = true;
+  late PageController _pageController;
+  int currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
-    loadSurahData(widget.sura.surahNumber);
+    loadSurahData(surahNumber: widget.sura.surahNumber);
+    currentIndex =
+        widget.sura.surahNumber - 1; // Adjusting index to match Surah number
+    _pageController = PageController(initialPage: currentIndex);
   }
 
   @override
@@ -38,43 +45,67 @@ class _QuranScreenState extends State<QuranScreen> {
             ),
           )
         : Scaffold(
-            appBar: AppBar(
-              backgroundColor: kPrimaryColor,
-            ),
+           
             backgroundColor: kPrimaryColor,
             body: PageView.builder(
-                itemCount: ayahs.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8),
-                    child: Center(
-                      child: Text(
-                        textAlign: TextAlign.right,
-                        ayahs[index].text,
+              controller: _pageController,
+              itemCount: surahs.length,
+              onPageChanged: (index) {
+               
+                  currentIndex = index;
+                  loadSurahData(surahNumber: ++index);
+              
+              },
+              itemBuilder: (context, index) {
+                SurahModel sura = surahs[index];
+
+                return Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: ListView(
+                    children: [
+                      Text(
+                        '﴾' + sura.surahName + '﴿',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 24,
-                        ),
+                            fontSize: 28, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  );
-                }),
+                      SizedBox(height: 10),
+                      ...widget.sura.ayahs!.map((ayah) => Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              ' ﴾${ayah.text}﴿ ${ayah.ayahNumber}',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  fontSize: 25, fontFamily: 'QuranFont'),
+                            ),
+                          )),
+                    ],
+                  ),
+                );
+              },
+            ),
           );
   }
 
-  loadSurahData(int surahNumber) async {
+  loadSurahData({int surahNumber = 0}) async {
     final String response =
         await rootBundle.loadString('assets/surah/surah_$surahNumber.json');
-    Map<String, dynamic> jsonData = json.decode(response);
-    loadAyatDataFromJson(jsonData);
+    jsonData = json.decode(response);
+    loadAyatDataFromJson(jsonData, surahNumber);
     setState(() {
       _isLoading = false;
     });
   }
 
-  loadAyatDataFromJson(Map<String, dynamic> json) {
-    for (int i = 0; i < json['verses'].length; i++) {
-      ayahs.add(Ayah.fromJson(json['verses'][i]));
-      print(Ayah.fromJson(json['verses'][i]));
+  loadAyatDataFromJson(Map<String, dynamic> json, int surahNumber) {
+    if (widget.sura.ayahs != null) widget.sura.ayahs!.clear();
+    if (surahs[surahNumber].ayahs.isEmpty) {
+      for (int i = 0; i < json['verses'].length; i++) {
+        widget.sura.ayahs.add(Ayah.fromJson(json['verses'][i]));
+        print(Ayah.fromJson(json['verses'][i]));
+      }
+    }else{
+
     }
   }
 }
