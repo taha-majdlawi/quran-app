@@ -32,7 +32,7 @@ class CustomCard extends StatelessWidget {
                         category.Name,
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 28,
+                          fontSize: 20,
                           fontFamily: 'Lalezar',
                         ),
                       ),
@@ -50,13 +50,13 @@ class CustomCard extends StatelessWidget {
             ),
             Positioned(
               left: 50,
-              bottom: 0,
+              bottom: 7,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0),
                 child: Image.asset(
                   category.image,
-                  width: 70,
-                  height: 90,
+                  width: 50,
+                  height: 70,
                 ),
               ),
             ),

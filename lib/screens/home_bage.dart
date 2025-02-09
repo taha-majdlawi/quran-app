@@ -17,23 +17,22 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 100,
         backgroundColor: kPrimaryColor,
-    automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         actions: [
-          Image.asset('assets/images/quran.png', height: 80, width: 80),
-          SizedBox(
-            height: 20,
-            width: 175,
-          ),
-          Text(
-            'القرآن الكريم',
-            style: TextStyle(
-              fontFamily: 'Lalezar',
-              fontSize: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+          //Image.asset('assets/images/quran.png', height: 60, width: 60),
+          Expanded(
+            child: Text(
+              textAlign: TextAlign.right,
+              'القرآن الكريم',
+              style: TextStyle(
+                fontFamily: 'Lalezar',
+                fontSize: 30,
+                color: const Color.fromARGB(255, 255, 255, 255),
+              ),
             ),
           ),
           SizedBox(
-            width: 20,
+            width: 17,
           ),
         ],
       ),
@@ -67,6 +66,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             CustomCard(category: category[1]),
+            CustomCard(category: category[2]),
           ],
         ),
       ),
