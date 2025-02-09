@@ -88,7 +88,7 @@ class _CustomBottombarSoundState extends State<CustomBottombarSound> {
                           await pauseAudio();
                         } else {
                           await playAudio(
-                              'https://server7.mp3quran.net/basit/${widget.surahNumber}.mp3'); // استبدل برابط التلاوة
+                              'https://server7.mp3quran.net/basit/${formatNumberWithLeadingZeros(widget.surahNumber, 3)}.mp3'); // استبدل برابط التلاوة
                         }
                       },
                     ),
@@ -112,4 +112,8 @@ class _CustomBottombarSoundState extends State<CustomBottombarSound> {
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     return "$minutes:$seconds";
   }
+String formatNumberWithLeadingZeros(int number, int length) {
+  return number.toString().padLeft(length, '0');
+}
+
 }
